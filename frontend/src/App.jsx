@@ -1,6 +1,10 @@
+import Header from "./components/utils/Header"
+
 function App() {
   return (
-    <div>App</div>
+    <div className='h-[8000px] bg-[#1c2230] text-white'>
+      <Header />
+    </div>
   )
 }
 
