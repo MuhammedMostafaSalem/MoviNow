@@ -17,6 +17,7 @@ export default withMT({
         lg: "992px",
         xl: "1200px",
         "2xl": "1400px",
+        "md-max": {max: "991px"},
       },
       colors: {
         orange: "#67dbda",
