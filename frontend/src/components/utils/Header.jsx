@@ -14,7 +14,7 @@ const Header = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-            if (window.scrollY > 100) {
+            if (window.scrollY > 40) {
                 setIsScrolled(true);
             } else {
                 setIsScrolled(false);
@@ -35,7 +35,7 @@ const Header = () => {
             z-50
             transition-all
             duration-1000
-            ${isScrolled ? 'bg-[#0c152465] py-[10px] border-b-[1px]' : 'py-[20px]'}
+            ${isScrolled ? 'bg-[#0c1524ee] py-[10px] border-b-[1px]' : 'py-[20px] border-none'}
         `}>
             <div className='container mx-auto flex justify-between items-center sm-max2:px-2'>
                 <a href="#" className='flex items-center gap-[5px]'>
