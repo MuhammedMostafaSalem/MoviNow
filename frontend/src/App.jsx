@@ -1,9 +1,18 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/utils/Header"
+import Home from "./pages/home/Home";
+import Footer from "./components/utils/Footer";
 
 function App() {
   return (
-    <div className='h-[8000px] bg-[#1c2230] text-white'>
-      <Header />
+    <div className='bg-[#1c2230] text-white'>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route index element={<Home />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
     </div>
   )
 }
