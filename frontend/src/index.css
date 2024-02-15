@@ -1,3 +1,84 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* style movieDetails */
+.gradient-background {
+    background: linear-gradient(
+        180deg,
+        rgba(4, 21, 45, 0) 0%,
+        #1c2230 79.17%
+    )
+}
+
+.CircularProgressbar-text {
+    font-size: 34px;
+    font-weight: 700;
+    fill: #fff;
+    dominant-baseline: middle;
+    text-anchor: middle;
+}
+.CircularProgressbar-trail {
+    stroke: transparent;
+}
+
+.playbtn {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+}
+.playbtn .text {
+    font-size: 20px;
+    transition: all 0.7s ease-in-out;
+}
+.playbtn .triangle {
+    stroke-dasharray: 240;
+    stroke-dashoffset: 480;
+    stroke: white;
+    transform: translateY(0);
+    transition: all 0.7s ease-in-out;
+}
+.playbtn .circle {
+    stroke: white;
+    stroke-dasharray: 650;
+    stroke-dashoffset: 1300;
+    transition: all 0.5s ease-in-out;
+}
+.playbtn:hover .triangle {
+    stroke-dashoffset: 0;
+    opacity: 1;
+    stroke: #da2f68;
+    animation: trailorPlay 0.7s ease-in-out;
+}
+.playbtn:hover .circle {
+    stroke-dashoffset: 0;
+    stroke: #da2f68;
+}
+.playbtn:hover .text {
+    color: #da2f68;
+}
+
+
+.info {
+    padding: 15px 0;
+    display: flex;
+}
+.info:not(:last-child) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.info .infoItem {
+    margin-right: 10px;
+    display: flex;
+    flex-flow: row wrap;
+}
+.info .text {
+    margin-right: 10px;
+    opacity: 0.5;
+    line-height: 24px;
+}
+.info .bold {
+    font-weight: 600;
+    opacity: 1;
+}
