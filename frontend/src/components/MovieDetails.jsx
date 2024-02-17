@@ -11,7 +11,7 @@ import {
 } from "@material-tailwind/react";
 import { FaTimes } from 'react-icons/fa';
 
-const MovieDetails = () => {
+const MovieDetails = ({darkMode}) => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(!open);
 
@@ -24,7 +24,10 @@ const MovieDetails = () => {
                     alt=""
                 />
             </div>
-            <div className="absolute bottom-0 left-0 w-full h-[250px] gradient-background"></div>
+            <div className={`
+                absolute bottom-0 left-0 w-full h-[250px]
+                ${darkMode ? 'gradient-background-dark' : 'gradient-background-light'}
+            `}></div>
             <div className='container mx-auto'>
                 <div className="left flex relative flex-col gap-[25px] md:flex-row md:gap-[50px]">
                     <div className="shrink-0">
@@ -34,8 +37,11 @@ const MovieDetails = () => {
                             alt=""
                         />
                     </div>
-                    <div className="right">
-                        <div className="title text-[28px] leading-[40px] md:text-[34px] md:leading-[44px]">
+                    <div className={`
+                        right
+                        ${darkMode ? 'text-[#f9f9f9]' : 'text-[#222]'}
+                    `}>
+                        <div className='title text-[28px] leading-[40px] md:text-[34px] md:leading-[44px]'>
                             name or title
                         </div>
                         <div className="subtitle text-[16px] leading-[24px] mb-[15px] italic opacity-[0.5] md:text-[20px] md:leading-[28px]">
@@ -47,7 +53,10 @@ const MovieDetails = () => {
                                 rating='3.5'
                             />
                             <div
-                                className="playbtn flex items-center gap-[20px] cursor-pointer"
+                                className={`
+                                    ${darkMode ? 'playLightMode' : 'playDarkMode'}
+                                    playbtn playLightMode flex items-center gap-[20px] cursor-pointer
+                                `}
                             >
                                 <PlayIcon onOpenDialog={handleOpen} />
                                 <span className="text">

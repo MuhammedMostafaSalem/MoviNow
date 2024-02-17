@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import logo from '../../assets/images/play-button.png'
 import { Button, IconButton, Input } from '@material-tailwind/react'
-import { MdOutlineLightMode } from "react-icons/md";
+import { MdOutlineLightMode, MdOutlineDarkMode } from "react-icons/md";
 import { FaBars, FaTimes } from 'react-icons/fa';
 
-const Header = () => {
+const Header = ({onToggleMode, darkMode}) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
 
@@ -35,7 +35,13 @@ const Header = () => {
             z-50
             transition-all
             duration-1000
-            ${isScrolled ? 'bg-[#0c1524ee] py-[10px] border-b-[1px]' : 'py-[20px] border-none'}
+            ${
+                isScrolled ?
+                    `${darkMode ? 'bg-[#222e]' : 'bg-[#f9f9f9e7]'}
+                        py-[3px]
+                    `
+                : 'py-[10px] border-none'
+            }
         `}>
             <div className='container mx-auto flex justify-between items-center sm-max2:px-2'>
                 <a href="#" className='flex items-center gap-[5px]'>
@@ -45,10 +51,14 @@ const Header = () => {
                     </h2>
                 </a>
                 <div className="ml-auto flex gap-1 md:mr-4">
-                    <IconButton variant="text" color="white">
-                        <MdOutlineLightMode className="h-4 w-4" />
+                    <IconButton className={`focus:outline-none ${darkMode ? 'text-[#f9f9f9e7]' : 'text-[#222]'}`} variant="text" onClick={onToggleMode}>
+                        {
+                            darkMode ?
+                                <MdOutlineLightMode className="h-4 w-4" />
+                            : <MdOutlineDarkMode className="h-4 w-4" />
+                        }
                     </IconButton>
-                    <IconButton variant="text" color="white">
+                    <IconButton className={`focus:outline-none ${darkMode ? 'text-[#f9f9f9e7]' : 'text-[#222]'}`} variant="text">
                         <div className="h-4 w-4">ar</div>
                     </IconButton>
                 </div>
@@ -70,7 +80,7 @@ const Header = () => {
                 >
                     <Input
                         type="search"
-                        color="white"
+                        color={darkMode ? 'white' : 'black'}
                         label="Type here..."
                         className="pr-20"
                         containerProps={{
@@ -79,7 +89,7 @@ const Header = () => {
                     />
                     <Button
                         size="sm"
-                        color="white"
+                        color={darkMode ? 'white' : 'black'}
                         className="!absolute right-1 top-1 rounded"
                     >
                         Search
