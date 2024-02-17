@@ -3,12 +3,28 @@
 @tailwind utilities;
 
 
+.dark-theme {
+    background-color: var(--background-color-dark);
+    color: var(--text-color-dark);
+}
+.light-theme {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
 /* style movieDetails */
-.gradient-background {
-    background: linear-gradient(
+.gradient-background-light {
+        background: linear-gradient(
         180deg,
         rgba(4, 21, 45, 0) 0%,
-        #1c2230 79.17%
+        #f9f9f9 79.17%
+    )
+}
+.gradient-background-dark {
+        background: linear-gradient(
+        180deg,
+        rgba(4, 21, 45, 0) 0%,
+        #222 79.17%
     )
 }
 
@@ -33,15 +49,27 @@
     font-size: 20px;
     transition: all 0.7s ease-in-out;
 }
+.playLightMode .triangle {
+    stroke: #f9f9f9;
+}
+.playDarkMode .triangle {
+    stroke: #222;
+}
 .playbtn .triangle {
     stroke-dasharray: 240;
     stroke-dashoffset: 480;
-    stroke: white;
+    /* stroke: white; */
     transform: translateY(0);
     transition: all 0.7s ease-in-out;
 }
+.playLightMode .circle {
+    stroke: #f9f9f9;
+}
+.playDarkMode .circle {
+    stroke: #222;
+}
 .playbtn .circle {
-    stroke: white;
+    /* stroke: white; */
     stroke-dasharray: 650;
     stroke-dashoffset: 1300;
     transition: all 0.5s ease-in-out;
@@ -58,6 +86,12 @@
 }
 .playbtn:hover .text {
     color: #da2f68;
+}
+.playLightMode .text {
+    color: #f9f9f9;
+}
+.playDarkMode .text {
+    color: #222;
 }
 
 
