@@ -1,9 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const CardMovie = () => {
+const CardMovie = ({item}) => {
+    
     return (
-        <Link to='/movie/:id'>
+        <Link to={`/movie/${item.id}`}>
             <div
                 className="group
                 relative
@@ -23,7 +24,7 @@ const CardMovie = () => {
                         transition-transform
                         duration-700 group-hover:rotate-3
                         group-hover:scale-125"
-                        src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                        src={`https://image.tmdb.org/t/p/w500/${item.backdrop_path}`}
                         alt=""
                     />
                 </div>
@@ -47,8 +48,8 @@ const CardMovie = () => {
                     duration-[1s]
                     group-hover:opacity-100"
                 >
-                    <h1 className="font-dmserif text-3xl md-max:text-[20px] font-bold text-white">Beauty</h1>
-                    <p className="mb-3 text-lg md-max:text-[15px] italic text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis dolore adipisci placeat.</p>
+                    <h1 className="font-dmserif text-lg md-max:text-[20px] font-bold text-white">{item.title}</h1>
+                    <p className="mb-3 text-xs md-max:text-[15px] italic text-white leading-[13px]">{item.overview}</p>
                 </div>
             </div>
         </Link>
