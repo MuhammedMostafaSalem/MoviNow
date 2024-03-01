@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PlayIcon = ({onOpenDialog}) => {
+const PlayIcon = () => {
     return (
         <svg
             version="1.1"
@@ -14,7 +14,6 @@ const PlayIcon = ({onOpenDialog}) => {
             enableBackground="new 0 0 213.7 213.7"
             xmlSpace="preserve"
             className='w-[60px] md:w-[80px]'
-            onClick={onOpenDialog}
         >
             <polygon
                 className="triangle"
