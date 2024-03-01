@@ -5,6 +5,10 @@ import Footer from "./components/utils/Footer";
 import MovieDetails from "./components/MovieDetails";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleDarkMode } from "./store/reducers/darkModeReducer";
+import { Button } from "@material-tailwind/react";
+import { useTranslation } from "react-i18next";
+import { changeLanguage, setDirection } from "./store/reducers/languageReducer";
+import { useState } from "react";
 
 function App() {
   const dispatch = useDispatch();
@@ -14,12 +18,28 @@ function App() {
     dispatch(toggleDarkMode());
   };
 
+  const { language, dir } = useSelector(state => state.lang);
+  const [langs, setLangs] = useState(language);
+  const [dirs, setDirs] = useState(dir);
+
+  const { i18n } = useTranslation();
+  const handleChangeLang = (lang) => {
+    i18n.changeLanguage(lang)
+    dispatch(changeLanguage(lang))
+    setLangs(lang)
+
+    const newDir = lang === 'ar' ? 'rtl' : 'ltr';
+    dispatch(setDirection(newDir));
+    setDirs(newDir);
+  }
+  document.dir = dirs;
+
   return (
     <div className={isDarkMode ? 'bg-[#222]' : 'bg-[#f9f9f9]'}>
       <BrowserRouter>
-        <Header onToggleMode={handleToggle} darkMode={isDarkMode} />
+        <Header onToggleMode={handleToggle} darkMode={isDarkMode} langs={langs} handleChangeLang={handleChangeLang} />
         <Routes>
-          <Route index element={<Home />} />
+          <Route index element={<Home darkMode={isDarkMode} />} />
           <Route path="/movie/:id" element={<MovieDetails darkMode={isDarkMode} />} />
         </Routes>
         <Footer darkMode={isDarkMode} />
