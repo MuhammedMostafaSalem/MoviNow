@@ -1,10 +1,10 @@
 import React from 'react'
 import MovieList from '../../components/MovieList'
 
-const Home = () => {
+const Home = ({darkMode}) => {
     return (
         <div className='pt-[70px]'>
-            <MovieList />
+            <MovieList darkMode={darkMode} />
         </div>
     )
 }
