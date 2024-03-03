@@ -19,7 +19,7 @@ const MovieList = ({darkMode}) => {
         if(movies.results) {
             moviesData = movies.results;
         } else {
-            moviesData
+            moviesData = []
         }
     } catch(err) {}
 
