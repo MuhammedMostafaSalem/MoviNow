@@ -6,5 +6,7 @@
     "Overview": "Overview",
     "Status": "Status",
     "ReleaseDate": "Release Date",
-    "Runtime": "Runtime"
+    "Runtime": "Runtime",
+    "Page": "Page",
+    "of": "of"
 }
