@@ -9,6 +9,8 @@ import { Button } from "@material-tailwind/react";
 import { useTranslation } from "react-i18next";
 import { changeLanguage, setDirection } from "./store/reducers/languageReducer";
 import { useState } from "react";
+import CurrentPage from "./pages/current page/CurrentPage";
+import Pagination from "./components/utils/Pagination";
 
 function App() {
   const dispatch = useDispatch();
@@ -34,14 +36,26 @@ function App() {
   }
   document.dir = dirs;
 
+  const { movies } = useSelector((state) => state.movies);
+  let moviesPages = []
+  try {
+    if(movies.total_pages) {
+      moviesPages = movies.total_pages;
+    } else {
+      moviesPages = []
+    }
+  } catch(err) {}
+
   return (
     <div className={isDarkMode ? 'bg-[#222]' : 'bg-[#f9f9f9]'}>
       <BrowserRouter>
         <Header onToggleMode={handleToggle} darkMode={isDarkMode} langs={langs} handleChangeLang={handleChangeLang} />
         <Routes>
-          <Route index element={<Home darkMode={isDarkMode} />} />
+          <Route path="/" element={<Home darkMode={isDarkMode} />} />
           <Route path="/movie/:id" element={<MovieDetails darkMode={isDarkMode} />} />
+          <Route path="/page/:page" element={<CurrentPage darkMode={isDarkMode} />} />
         </Routes>
+        <Pagination totalPages={moviesPages} darkMode={isDarkMode} />
         <Footer darkMode={isDarkMode} />
       </BrowserRouter>
     </div>
