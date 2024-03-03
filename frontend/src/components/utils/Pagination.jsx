@@ -55,7 +55,7 @@ const Pagination = ({ totalPages, darkMode }) => {
                 <HiOutlineArrowSmallLeft strokeWidth={2} className={`h-4 w-4 ${language === 'ar' ? 'rotate-180' : ''}`} />
             </IconButton>
             <Typography color="gray" className={`font-normal flex gap-2 ${darkMode ? 'text-[#f9f9f9e7]' : 'text-[#222]'}`}>
-                {t('Page')} <strong>{currentPage}</strong><p>{t('of')}</p>
+                {t('Page')} <strong>{currentPage}</strong><span>{t('of')}</span>
                 <strong>{totalPages}</strong>
             </Typography>
             <IconButton
