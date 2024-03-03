@@ -22,7 +22,7 @@ const MovieDetails = ({darkMode}) => {
 
     const Param= useParams();
     const [movie, setMovie] = useState([])
-    const { language } = item(state => state.lang);
+    const { language } = useSelector(state => state.lang);
 
     // get movie details with axios
     const getMovieDetails= async()=> {
