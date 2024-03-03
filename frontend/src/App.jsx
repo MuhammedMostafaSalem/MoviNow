@@ -51,11 +51,20 @@ function App() {
       <BrowserRouter>
         <Header onToggleMode={handleToggle} darkMode={isDarkMode} langs={langs} handleChangeLang={handleChangeLang} />
         <Routes>
-          <Route path="/" element={<Home darkMode={isDarkMode} />} />
+          <Route path="/" element={
+            <div>
+              <Home darkMode={isDarkMode} />
+              <Pagination totalPages={moviesPages} darkMode={isDarkMode} />
+            </div>
+          } />
           <Route path="/movie/:id" element={<MovieDetails darkMode={isDarkMode} />} />
-          <Route path="/page/:page" element={<CurrentPage darkMode={isDarkMode} />} />
+          <Route path="/page/:page" element={
+            <div>
+              <CurrentPage darkMode={isDarkMode} />
+              <Pagination totalPages={moviesPages} darkMode={isDarkMode} />
+            </div>
+          } />
         </Routes>
-        <Pagination totalPages={moviesPages} darkMode={isDarkMode} />
         <Footer darkMode={isDarkMode} />
       </BrowserRouter>
     </div>
