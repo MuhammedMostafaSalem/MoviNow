@@ -1,10 +1,10 @@
 import React from 'react'
 import { createSlice } from '@reduxjs/toolkit';
-import { getAllMovies, getMoviesPage } from '../actions/moviesAction';
+import { getAllMovies, getMovieSearch, getMoviesPage } from '../actions/moviesAction';
 
 const initialState = {
     movies: [],
-    pageCount: 0,
+    pageCount: 1,
     loading: false,
     error: null,
 }
@@ -36,6 +36,20 @@ const moviesReducer = createSlice({
             state.pageCount = action.payload;
         });
         builder.addCase(getMoviesPage.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.payload;
+        });
+
+        builder.addCase(getMovieSearch.pending, (state) => {
+            state.loading = true;
+            state.error = null;
+        });
+        builder.addCase(getMovieSearch.fulfilled, (state, action) => {
+            state.loading = false;
+            state.movies = action.payload;
+            state.pageCount = action.payload;
+        });
+        builder.addCase(getMovieSearch.rejected, (state, action) => {
             state.loading = false;
             state.error = action.payload;
         });

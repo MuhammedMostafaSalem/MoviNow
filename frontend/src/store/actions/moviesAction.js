@@ -21,3 +21,13 @@ export const getMoviesPage = createAsyncThunk('movies/getMoviesPage', async ({ l
         throw error; // Re-throw for error handling in the reducer
     }
 });
+
+export const getMovieSearch = createAsyncThunk('movies/searchResults', async ({language, keyword, page}) => {
+    try {
+        const response = await useGetDataToken(`/search/movie?api_key=${ApiKey}&query=${keyword}&language=${language}&page=${page}`);
+        return response.data;
+    } catch(error) {
+        console.log(error)
+        throw error;
+    }
+});
