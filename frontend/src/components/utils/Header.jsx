@@ -4,6 +4,8 @@ import { Button, IconButton, Input } from '@material-tailwind/react'
 import { MdOutlineLightMode, MdOutlineDarkMode } from "react-icons/md";
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Header = ({onToggleMode, darkMode, langs, handleChangeLang}) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,6 +29,19 @@ const Header = ({onToggleMode, darkMode, langs, handleChangeLang}) => {
 
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    const navigate = useNavigate();
+    const [keyword, setKeyword] = useState('');
+    const { pageCount } = useSelector((state) => state.movies);
+
+    const OnChangeKeyword = (e) => {
+        setKeyword(e.target.value)
+    }
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        navigate(`/search/${keyword}/page/${pageCount}`)
+    };
 
     return (
         <header className={`
@@ -90,6 +105,8 @@ const Header = ({onToggleMode, darkMode, langs, handleChangeLang}) => {
                     >
                         <Input
                             type="search"
+                            value={keyword}
+                            onChange={OnChangeKeyword}
                             color={darkMode ? 'white' : 'black'}
                             label={t('TypeHereSearch')}
                             containerProps={{
@@ -100,6 +117,7 @@ const Header = ({onToggleMode, darkMode, langs, handleChangeLang}) => {
                             size="sm"
                             color={darkMode ? 'white' : 'black'}
                             className={`!absolute top-1 rounded ${langs === "en" ? 'right-1' : 'left-1'}`}
+                            onClick={handleSearch}
                         >
                             {t('Search')}
                         </Button>
