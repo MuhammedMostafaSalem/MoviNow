@@ -1,1 +1,0 @@
-![Image site](/frontend/public/image-site.PNG)
