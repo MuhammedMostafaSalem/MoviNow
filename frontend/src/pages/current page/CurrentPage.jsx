@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import CardMovie from '../../components/CardMovie';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMoviesPage } from '../../store/actions/moviesAction';
+import HeadTitle from '../../components/HeadTitle';
 
 const CurrentPage = () => {
     const { page } = useParams();
@@ -27,6 +28,7 @@ const CurrentPage = () => {
     
     return (
         <div className='container mx-auto pt-[70px]'>
+            <HeadTitle title={"page " + page} />
             <div
                 className='w-full
                 h-auto

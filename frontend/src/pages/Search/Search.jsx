@@ -4,6 +4,7 @@ import { useLocation, useParams } from 'react-router-dom'
 import { getMovieSearch } from '../../store/actions/moviesAction';
 import CardMovie from '../../components/CardMovie';
 import PaginationResults from '../../components/utils/PaginationResults';
+import HeadTitle from '../../components/HeadTitle';
 
 const Search = ({darkMode}) => {
     const dispatch = useDispatch();
@@ -38,6 +39,7 @@ const Search = ({darkMode}) => {
 
     return (
         <div className='container mx-auto pt-[70px]'>
+            <HeadTitle title={keyword} />
             <div
                 className='w-full
                 h-auto

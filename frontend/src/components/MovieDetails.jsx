@@ -14,6 +14,7 @@ import { useParams } from 'react-router-dom';
 import baseURL from '../api/baseURL';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import HeadTitle from './HeadTitle';
 
 const MovieDetails = ({darkMode}) => {
     const { t } = useTranslation();
@@ -70,6 +71,7 @@ const MovieDetails = ({darkMode}) => {
 
     return (
         <div className='w-full pt-[100px]'>
+            <HeadTitle title={movie.title} />
             <div className='w-full h-full absolute top-0 left-0 opacity-[0.1] overflow-hidden'>
                 <img
                     className="posterImg w-full h-full object-cover object-center"
